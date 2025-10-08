@@ -78,6 +78,9 @@ app.post("/register", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
+     
+    console.log("JWT Secret being used by server:", process.env.JWT_SECRET);
+
     const { userName, password } = req.body;
     const user = await User.findOne({ userName });
     if(!user) return res.status(400).json({ error: "User not found" });
