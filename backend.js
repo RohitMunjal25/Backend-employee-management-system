@@ -91,6 +91,8 @@ app.post("/login", async (req, res) => {
     const token = jwt.sign({ id: user._id.toString() }, process.env.JWT_SECRET, { expiresIn: "1h" });
     res.json({ token });
   } catch(err) {
+    console.log("login crashed", err);
+    
     res.status(500).json({ error: "Server error" });
   }
 });
